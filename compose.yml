@@ -1,0 +1,15 @@
+services:
+  mcp:
+    build:
+      context: .
+    ports:
+      - "${MCP_PORT:-3068}:8080"
+    environment:
+      LISTEN_ADDR: ":8080"
+      MCP_RESOURCE_URL: ${MCP_RESOURCE_URL}
+      MCP_SERVER_NAME: ${MCP_SERVER_NAME:-mcp-oauth-demo}
+      MCP_SERVER_VERSION: ${MCP_SERVER_VERSION:-1.0.0}
+      OAUTH_ISSUER_URL: ${OAUTH_ISSUER_URL}
+      OAUTH_RESOURCE_NAME: ${OAUTH_RESOURCE_NAME:-MCP OAuth Demo}
+      OAUTH_REQUIRED_SCOPES: ${OAUTH_REQUIRED_SCOPES:-notes:read notes:write}
+      OAUTH_SIGNING_ALGS: ${OAUTH_SIGNING_ALGS:-RS256}
