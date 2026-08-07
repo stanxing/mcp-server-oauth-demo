@@ -17,8 +17,10 @@ access token's `sub` claim.
 1. Client (e.g. MCP Inspector) calls the MCP server without a token.
 2. Server responds `401` with `WWW-Authenticate` pointing at its
    `/.well-known/oauth-protected-resource` metadata.
-3. Client discovers the authorization server from that metadata, then
-   discovers the authorization server's own OAuth metadata.
+3. Client reads the `authorization_servers` field from that metadata to find
+   the authorization server, then discovers the authorization server's own
+   OAuth metadata at `/.well-known/oauth-authorization-server` (RFC 8414) or
+   `/.well-known/openid-configuration` (OIDC Discovery).
 4. Client redirects the user to the authorization server to sign in and
    approve the requested scopes.
 5. Authorization server issues an access token audienced to this MCP

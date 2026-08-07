@@ -15,8 +15,10 @@ claim 隔离。
 1. 客户端(例如 MCP Inspector)在没有 token 的情况下调用 MCP server。
 2. Server 返回 `401`,并通过 `WWW-Authenticate` 指向其
    `/.well-known/oauth-protected-resource` 元数据。
-3. 客户端从该元数据中发现授权服务器,再进一步发现授权服务器自身的 OAuth
-   元数据。
+3. 客户端从该元数据的 `authorization_servers` 字段中找到授权服务器,再向
+   授权服务器的 `/.well-known/oauth-authorization-server`(RFC 8414)或
+   `/.well-known/openid-configuration`(OIDC Discovery)路径发起请求,发现
+   其自身的 OAuth 元数据。
 4. 客户端将用户重定向到授权服务器进行登录,并同意请求的 scopes。
 5. 授权服务器签发一个受众(audience)指向该 MCP server 资源的 access
    token。
