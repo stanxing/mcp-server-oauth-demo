@@ -38,7 +38,7 @@ cp .env.example .env
 
 | Variable                | Required | Description                                                                      |
 | ----------------------- | -------- | -------------------------------------------------------------------------------- |
-| `OAUTH_ISSUER_URL`      | yes      | Issuer URL of your authorization server (e.g. your auth-center instance).        |
+| `OAUTH_ISSUER_URL`      | yes      | Issuer URL of your authorization server (e.g. https://auth.example.com).         |
 | `OAUTH_SIGNING_ALGS`    | no       | Allowed signing algorithms. Default `RS256`.                                     |
 | `OAUTH_REQUIRED_SCOPES` | no       | Scopes required to call the tools. Default `notes:read notes:write`.             |
 | `MCP_RESOURCE_URL`      | no       | This server's resource/audience identifier. Default `http://localhost:8080/mcp`. |
