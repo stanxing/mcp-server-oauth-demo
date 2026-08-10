@@ -67,7 +67,7 @@ func newHTTPHandler(cfg config, verifier auth.TokenVerifier, store *noteStore) h
 		_ = json.NewEncoder(w).Encode(map[string]string{"status": "ok"})
 	})
 
-	return mux
+	return accessLogMiddleware(mux)
 }
 
 func newMCPServer(cfg config, store *noteStore) *mcp.Server {
